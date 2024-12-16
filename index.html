@@ -22,7 +22,6 @@
         body.night-mode label {
             background-color: transparent;
             color: white;
-            /* border: 1px solid white; */
         }
         body.night-mode button {
             background-color: #2c2c2c;
@@ -62,14 +61,50 @@
         <span id="kg"></span>
     </div>
     <div class="input-group">
+        <label for="f">温度 °F: </label>
+        <input type="number" id="f" name="f" placeholder="°F">
+        <span id="k"></span>
+    </div>
+    <div class="input-group">
         <label for="ft">长度 ft: </label>
         <input type="number" id="ft" name="ft" placeholder="ft">
         <span id="m"></span>
     </div>
     <div class="input-group">
-        <label for="f">温度 °F: </label>
-        <input type="number" id="f" name="f" placeholder="°F">
-        <span id="k"></span>
+        <label for="in">长度 in: </label>
+        <input type="number" id="in" name="in" placeholder="in">
+        <span id="cm"></span>
+    </div>
+    <div class="input-group">
+        <label for="ft2">面积 ft²: </label>
+        <input type="number" id="ft2" name="ft2" placeholder="ft²">
+        <span id="m2"></span>
+    </div>
+    <div class="input-group">
+        <label for="in2">面积 in²: </label>
+        <input type="number" id="in2" name="in2" placeholder="in²">
+        <span id="cm2"></span>
+    </div>
+    
+    <div class="input-group">
+        <label for="ft3">体积 ft³: </label>
+        <input type="number" id="ft3" name="ft3" placeholder="ft³">
+        <span id="m3"></span>
+    </div>
+    <div class="input-group">
+        <label for="in3">体积 in³: </label>
+        <input type="number" id="in3" name="in3" placeholder="in³">
+        <span id="cm3"></span>
+    </div>
+    <div class="input-group">
+        <label for="bhp">功率 bhp: </label>
+        <input type="number" id="bhp" name="bhp" placeholder="bhp">
+        <span id="kw"></span>
+    </div>
+    <div class="input-group">
+        <label for="gallon">体积 gallon: </label>
+        <input type="number" id="gallon" name="gallon" placeholder="gallon">
+        <span id="liters"></span>
     </div>
 
     <script>
@@ -106,6 +141,16 @@
             }
         });
 
+        document.getElementById('f').addEventListener('input', function() {
+            const f = parseFloat(this.value);
+            if (!isNaN(f)) {
+                const k = (f - 32) * 5/9 + 273.15;
+                document.getElementById('k').textContent = `${k.toFixed(2)} K`;
+            } else {
+                document.getElementById('k').textContent = '';
+            }
+        });
+
         document.getElementById('ft').addEventListener('input', function() {
             const ft = parseFloat(this.value);
             if (!isNaN(ft)) {
@@ -116,13 +161,73 @@
             }
         });
 
-        document.getElementById('f').addEventListener('input', function() {
-            const f = parseFloat(this.value);
-            if (!isNaN(f)) {
-                const k = (f - 32) * 5/9 + 273.15;
-                document.getElementById('k').textContent = `${k.toFixed(2)} K`;
+        document.getElementById('in').addEventListener('input', function() {
+            const inch = parseFloat(this.value);
+            if (!isNaN(inch)) {
+                const cm = inch * 2.54;
+                document.getElementById('cm').textContent = `${cm.toFixed(2)} cm`;
             } else {
-                document.getElementById('k').textContent = '';
+                document.getElementById('cm').textContent = '';
+            }
+        });
+
+        document.getElementById('ft2').addEventListener('input', function() {
+            const ft2 = parseFloat(this.value);
+            if (!isNaN(ft2)) {
+                const m2 = ft2 * 0.092903;
+                document.getElementById('m2').textContent = `${m2.toFixed(2)} m²`;
+            } else {
+                document.getElementById('m2').textContent = '';
+            }
+        });
+
+        document.getElementById('in2').addEventListener('input', function() {
+            const in2 = parseFloat(this.value);
+            if (!isNaN(in2)) {
+                const cm2 = in2 * 6.4516;
+                document.getElementById('cm2').textContent = `${cm2.toFixed(2)} cm²`;
+            } else {
+                document.getElementById('cm2').textContent = '';
+            }
+        });
+
+        document.getElementById('ft3').addEventListener('input', function() {
+            const ft3 = parseFloat(this.value);
+            if (!isNaN(ft3)) {
+                const m3 = ft3 * 0.0283168;
+                document.getElementById('m3').textContent = `${m3.toFixed(2)} m³`;
+            } else {
+                document.getElementById('m3').textContent = '';
+            }
+        });
+
+        document.getElementById('in3').addEventListener('input', function() {
+            const in3 = parseFloat(this.value);
+            if (!isNaN(in3)) {
+                const cm3 = in3 * 16.3871;
+                document.getElementById('cm3').textContent = `${cm3.toFixed(2)} cm³`;
+            } else {
+                document.getElementById('cm3').textContent = '';
+            }
+        });
+
+        document.getElementById('bhp').addEventListener('input', function() {
+            const bhp = parseFloat(this.value);
+            if (!isNaN(bhp)) {
+                const kw = bhp * 0.7457;
+                document.getElementById('kw').textContent = `${kw.toFixed(2)} kW`;
+            } else {
+                document.getElementById('kw').textContent = '';
+            }
+        });
+
+        document.getElementById('gallon').addEventListener('input', function() {
+            const gallon = parseFloat(this.value);
+            if (!isNaN(gallon)) {
+                const liters = gallon * 3.78541;
+                document.getElementById('liters').textContent = `${liters.toFixed(2)} L`;
+            } else {
+                document.getElementById('liters').textContent = '';
             }
         });
     </script>
